@@ -1,0 +1,57 @@
+{
+  "cache_config": {
+    "cacheSizeMB": 1000,
+    "navyReaderThreads": 16,
+    "navyWriterThreads": 16,
+    "nvmCachePaths": ["/dev/nvme3n3"],
+    "nvmCacheSizeMB": 410337,
+    "navyBlockSize": 4096,
+    "navySizeClasses": [],
+    "navyParcelMemoryMB": 6048,
+    "enableChainedItem": true,
+    "htBucketPower": 26,
+    "moveOnSlabRelease": true,
+    "poolRebalanceIntervalSec": 2,
+    "rebalanceStrategy": "hits",
+    "rebalanceMinRatio": 0.1,
+    "rebalanceMinSlabs": 2,
+    "navyZonedDevice" : true,
+    "navyRegionSizeMB" : 1077,
+    "navySmallItemMaxSize": 2048,
+    "navyBigHashSizePct": 0,
+    "navyKangarooSizePct": 0,
+    
+    "deviceMaxWriteSize": 0,
+    "navyZNSKVCacheSizePct": 90,
+    "navyZNSKVCacheBucketSize": 4096,
+    "navyZNSKVCacheBucketRatio": 50,
+    "navyZNSKVCacheBloomFilterFp": 0.001,
+    "navyZNSKVCacheElementCountPerPBF": 40,
+    "navyZNSKVCacheEnableWriteBack": true,
+    "navyZNSKVCacheStartStatZone": 0,
+    "navyZNSKVCacheStep": 60,
+
+    "truncateItemToOriginalAllocSizeInNvm": true,
+    "navyZNSKVCacheEnableDoubleHash": false,
+    "navyZNSKVCacheEnableDoubleBuffer": true,
+    "navyZNSKVCacheEnableKickOff": false,
+    "navyZNSKVCacheMaxNumKicks": 10
+  },
+  "test_config": {
+    "opRatePerSec": 550000,
+    "opRateBurstSize": 200,
+    "enableLookaside": true,
+    "generator": "replay",
+    "replayGeneratorConfig":
+    {
+        "ampFactor": 12
+    },    
+    "repeatTraceReplay": false,
+    "repeatOpCount" : true,
+    "onlySetIfMiss" : false,
+    "numOps": 100000000000, 
+    "numThreads": 4, 
+    "prepopulateCache": true, 
+    "traceFileName": "/mnt/zns/trace/trace/twitter/lean_trace/merge.csv"
+  }
+}
