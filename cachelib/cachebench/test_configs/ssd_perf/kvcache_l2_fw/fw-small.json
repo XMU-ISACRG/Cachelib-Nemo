@@ -1,0 +1,79 @@
+{
+  "cache_config": {
+    "cacheSizeMB": 1000,
+    "navyReaderThreads": 16,
+    "navyWriterThreads": 16,
+    "nvmCachePaths": ["/dev/nvme2n2"],
+    // "writeAmpDeviceList": ["nvme2n2"],
+    "nvmCacheSizeMB": 410337,
+    "navyBlockSize": 4096,
+    "navySizeClasses": [],
+    "navyParcelMemoryMB": 6048,
+    "enableChainedItem": true,
+    "htBucketPower": 26,
+    "moveOnSlabRelease": true,
+    "poolRebalanceIntervalSec": 2,
+    "rebalanceStrategy": "hits",
+    "rebalanceMinRatio": 0.1,
+    "rebalanceMinSlabs": 2,
+    "navyZonedDevice" : true,
+    "navyRegionSizeMB" : 1077,
+    "navyBigHashSizePct": 0,
+    "navyKangarooSizePct": 95,
+    "navyKangarooBucketSize": 8192,
+    "navyKangarooLogSizePct": 5,
+    "navyKangarooLogPhysicalPartitions": 32,
+    "navyKangarooLogIndexPerPhysicalPartitions": 512,
+    "navyKangarooLogThreshold": 1,
+    "navySmallItemMaxSize": 2048,
+    "navyKangarooLogWriteGranularity": 1048576,
+
+    "numPools" : 1
+  },
+  "test_config": {
+    "enableLookaside": true,
+    "generator": "online",
+    "numKeys": 7229804,
+    "numOps": 6300000,
+    "numThreads": 24,
+    "poolDistributions": [
+      {
+        "addChainedRatio": 0.0,
+        "delRatio": 0.0,
+        "getRatio": 0.6,
+        "keySizeRange": [
+          8,
+          16
+        ],
+        "keySizeRangeProbability": [
+          1.0
+        ],
+        "loneGetRatio": 8.2e-06,
+        "loneSetRatio": 0.21,
+        "setRatio": 0.0,
+        "popDistFile": "pop.json",
+        "setRatio": 0.0,
+        "valSizeDistFile": "sizes.json"
+      }
+    ],
+
+
+    "opDelayNs": 5000000,
+    "opDelayBatch": 1
+    // "opRatePerSec": 550000,
+    // "opRateBurstSize": 200,
+    // "enableLookaside": true,
+    // "generator": "replay",
+    // "replayGeneratorConfig":
+    // {
+    //     "ampFactor": 6 
+    // },    
+    // "repeatTraceReplay": false,
+    // "repeatOpCount" : true,
+    // "onlySetIfMiss" : false,
+    // "numOps": 100000000000, 
+    // "numThreads": 5, 
+    // "prepopulateCache": true, 
+    // "traceFileName": "/traces/meta/fb-04142020-reformatted.csv"
+  }
+}

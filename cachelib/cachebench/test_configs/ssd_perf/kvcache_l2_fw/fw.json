@@ -1,0 +1,46 @@
+//"nvmCacheSizeMB": 927297,
+{
+    "cache_config": {
+      "cacheSizeMB": 1000,
+      "navyReaderThreads": 16,
+      "navyWriterThreads": 16,
+      "nvmCachePaths": ["/dev/nvme2n2"],
+      // "writeAmpDeviceList": ["nvme2n2"],
+      "nvmCacheSizeMB": 410337,
+      "navyBlockSize": 4096,
+      "navySizeClasses": [],
+      "navyParcelMemoryMB": 6048,
+      "enableChainedItem": true,
+      "htBucketPower": 26,
+      "moveOnSlabRelease": true,
+      "poolRebalanceIntervalSec": 2,
+      "rebalanceStrategy": "hits",
+      "rebalanceMinRatio": 0.1,
+      "rebalanceMinSlabs": 2,
+      "navyZonedDevice" : true,
+      "navyRegionSizeMB" : 1077,
+      "navyBigHashSizePct": 0,
+
+      "navyKangarooSizePct": 90,
+      "navyKangarooBucketSize": 8192,
+      "navyKangarooLogSizePct": 5,
+      "navyKangarooLogPhysicalPartitions": 32,
+      "navyKangarooLogIndexPerPhysicalPartitions": 512,
+      "navyKangarooLogThreshold": 1,
+      "navySmallItemMaxSize": 2048
+    },
+    "test_config": {
+      "enableLookaside": true,
+      "numOps" : 10000,
+      "numThreads" : 32,
+      "numKeys" : 30000,
+      
+      "keySizeRange" : [10, 32, 64],
+      "keySizeRangeProbability" : [0.3, 0.7],
+      "valSizeRange" : [50, 200],
+      "valSizeRangeProbability" : [1.0],
+      "getRatio" : 0.7,
+      "setRatio" : 0.3
+    }
+  }
+  

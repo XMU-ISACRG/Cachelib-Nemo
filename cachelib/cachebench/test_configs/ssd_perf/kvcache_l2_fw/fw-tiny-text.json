@@ -1,0 +1,52 @@
+{
+  "cache_config": {
+    "cacheSizeMB": 1000,
+    "navyReaderThreads": 16,
+    "navyWriterThreads": 16,
+    "nvmCachePaths": ["/dev/nvme3n2"],
+    "nvmCacheSizeMB": 410337,
+    "navyBlockSize": 4096,
+    "navySizeClasses": [],
+    "navyParcelMemoryMB": 6048,
+    "enableChainedItem": true,
+    "htBucketPower": 26,
+    "moveOnSlabRelease": true,
+    "poolRebalanceIntervalSec": 2,
+    "rebalanceStrategy": "hits",
+    "rebalanceMinRatio": 0.1,
+    "rebalanceMinSlabs": 2,
+    "navyZonedDevice" : true,
+    "navyRegionSizeMB" : 1077,
+    "navyBigHashSizePct": 0,
+    "navyKangarooSizePct": 90,
+    "navyKangarooBucketSize": 8192,
+    "navyKangarooLogSizePct": 5,
+    "navyKangarooLogPhysicalPartitions": 32,
+    "navyKangarooLogIndexPerPhysicalPartitions": 1024,
+    "navyKangarooLogThreshold": 1,
+    "navySmallItemMaxSize": 2048,
+    "truncateItemToOriginalAllocSizeInNvm": true,
+    "navyKangarooLogWriteGranularity": 1048576,
+
+    "navyKangarooFlushingThreshold": 0.2,
+    "navyKangarooGcUpperThreshold": 0.05,
+    "navyKangarooGcLowerThreshold": 0.03,
+    "navyKangarooSetOverprovisioning": 0.05
+  },
+  "test_config": {
+    "opRatePerSec": 550000,
+    "enableLookaside": true,
+    "generator": "replay",
+    "replayGeneratorConfig":
+    {
+        "ampFactor": 12
+    },
+    "repeatTraceReplay": false,
+    "repeatOpCount" : true,
+    "onlySetIfMiss" : false,
+    "numOps": 100000000000, 
+    "numThreads": 4,
+    "prepopulateCache": true, 
+    "traceFileName": "/mnt/zns/trace/trace/twitter/lean_trace/merge.csv"
+  }
+}
