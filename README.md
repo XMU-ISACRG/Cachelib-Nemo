@@ -77,3 +77,52 @@ https://www.facebook.com/whitehat
 
 Facebook's security team will triage your report and determine whether or not is
 it eligible for a bounty under our program.
+
+## `test.sh` Usage
+
+The `test.sh` script is located in the root directory of the repository. It is designed to automate the following tasks:
+
+1. Build the project (if `./contrib/build.sh` exists).
+2. Reset ZNS NVMe zones and set the I/O scheduler.
+3. Run the `cachebench` binary with a specified JSON configuration file and log the output.
+
+### Options
+
+- `-d DEVICE`    Specify the NVMe device name (default: `nvme3n2`). Updates the `nvmCachePaths` field in the JSON configuration file.
+- `-p PATH`      Specify the path to the `cachebench` binary (default: `opt/cachelib/bin/cachebench`).
+- `-j JSON`      Specify the path to the JSON test configuration file (default: `cachelib/cachebench/test_configs/ssd_perf/kvcache_l2_fw/fw-tiny-text.json`).
+- `-l LOG`       Specify the path to the output log file (default: `/home/nemo/Nemo/cachelib/log/fw_ae.log`).
+- `-t TRACE`     Specify the path to the trace file (required). Updates the `traceFileName` field in the JSON configuration file. This parameter is mandatory for the script to run correctly. Ensure the trace file exists and is accessible.
+
+### Updated Notes
+
+- The `-t TRACE` option is now mandatory. The script will validate the existence of the specified trace file and update the `traceFileName` field in the JSON configuration file accordingly.
+- The script will also update the `nvmCachePaths` field in the JSON configuration file with the specified NVMe device name (`-d DEVICE`).
+- Ensure the JSON configuration file exists at the specified path (`-j JSON`). If the file is missing, the script will exit with an error.
+
+### Examples
+
+```sh
+# Run with defaults (same behaviour as original simple invocation)
+./test.sh -d nvme3n2 -p opt/cachelib/bin/cachebench -j cachelib/cachebench/test_configs/ssd_perf/kvcache_l2_fw/fw-tiny-text.json -l /home/nemo/Nemo/cachelib/log/fw_ae.log -t /path/to/trace.csv
+
+# Specify custom device, config file, and trace file
+./test.sh -d nvme2n1 -p ./opt/cachelib/bin/cachebench -j custom_config.json -l /tmp/custom.log -t /path/to/custom_trace.csv
+
+# Example with a different log file and trace file
+./test.sh -d nvme1n1 -p ./opt/cachelib/bin/cachebench -j cachelib/cachebench/test_configs/ssd_perf/kvcache_l2_fw/fw-tiny-text.json -l /var/logs/test.log -t /var/traces/test_trace.csv
+```
+
+## Configuration Notes
+
+All configurations mentioned in the paper can be modified directly in the JSON files provided in the repository. For example, the `fw-tiny-text.json` file contains parameters such as `nvmCachePaths` and other cache settings. Adjust these fields to match the experimental setup described in the paper.
+
+### Adjusting FwLog/FwSet Ratios
+
+To adjust the ratio of FwLog to FwSet in the small object cache, you can modify the `navyKangarooLogSizePct` field in the JSON configuration file. For example:
+
+- A value of `5` means that 5% of the flash is allocated to FwLog, and 95% of the flash is allocated to FwSet.
+
+To adjust the over-provisioning (OP) ratio of FwSet, you can modify the `navyKangarooSetOverprovisioning` field in the JSON configuration file. For example:
+
+- A value of `0.05` means that 5% of the flash in FwSet is used as over-provisioning space.
