@@ -111,3 +111,16 @@ python3 clean_wa.py ./cachelib/log/run.log ./cachelib/log/progress.log -o ./cach
 Replace `file1` and `file2` with the appropriate file paths.
 
 **Note:** The instructions for using the `clean_wa.py` script apply to the FairyWREN branch as well. Ensure that you follow the same steps for processing logs in the FairyWREN branch.
+
+### Citation
+
+If you use this work in your research, please cite it as follows:
+
+```
+@inproceedings{yang2026nemo,
+  title={Nemo: A Low-Write-Amplification Cache for Tiny Objects on Log-Structured Flash Devices.},
+  author={Yang, Xufeng and Tan, Tingting and Hu, Jingxin and Gao, Congming and Liu, Mingyang and Jiang, Tianyang and Long, Linbo and Lv, Yina and Shu, Jiwu},
+  booktitle={Proceedings of the 31th ACM International Conference on Architectural Support for Programming Languages and Operating Systems},
+  year={2026}
+}
+```
