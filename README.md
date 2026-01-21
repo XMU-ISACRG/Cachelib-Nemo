@@ -89,23 +89,25 @@ All configurations mentioned in the paper can be modified directly in the JSON f
 
 **Please Note!**
 
-To view the Write Amplification (WA) log in Figure 13, use the `clean_wa.sh` script to process the original log. The original log contains interference from the Large Object Cache, but the results in the paper are based on the Small Object Cache. After processing, you will be able to see the trace and WA growth trend.
+To view the Write Amplification (WA) log in Figure 13, use the `clean_wa.py` script to process the original log. The original log contains interference from the Large Object Cache, but the results in the paper are based on the Small Object Cache. After processing, you will be able to see the trace and WA growth trend.
 
 For Figure 14, latency can be directly observed in the original log.
 
 #### Usage
 
-When using the `clean_wa.sh` script, pay special attention to the `file1` and `file2` parameters. Ensure that:
+When using the `clean_wa.py` script, you must provide two required files:
 
-- `file1` is the path to the original log file containing the raw data.
-- `file2` is the path where the processed log will be saved.
+- `file1`: Path to the progress tracker log file (e.g., `./cachelib/log/run.log`).
+- `file2`: Path to the NVM stats log file (e.g., `./cachelib/log/progress.log`).
+
+You can also specify an optional output file path using the `-o` flag. By default, the output will be saved as `output.csv`.
 
 Example:
 
 ```sh
-./clean_wa.sh file1 file2
+python3 clean_wa.py ./cachelib/log/run.log ./cachelib/log/progress.log -o ./cachelib/log/wa_output.csv
 ```
 
 Replace `file1` and `file2` with the appropriate file paths.
 
-**Note:** The instructions for using the `clean_wa.sh` script apply to the FairyWREN branch as well. Ensure that you follow the same steps for processing logs in the FairyWREN branch.
+**Note:** The instructions for using the `clean_wa.py` script apply to the FairyWREN branch as well. Ensure that you follow the same steps for processing logs in the FairyWREN branch.

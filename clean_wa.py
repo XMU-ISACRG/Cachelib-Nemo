@@ -1,9 +1,24 @@
 import re
 from datetime import datetime
+import argparse
+import os
 
-file1 = "./cachelib/log/run.log"   # progress tracker
-file2 = "./cachelib/log/progress.log"   # nvm stats
-output = "output.csv"
+# Parse command-line arguments
+parser = argparse.ArgumentParser(description="Process WA logs.")
+parser.add_argument("file1", help="Path to the progress tracker log file.")
+parser.add_argument("file2", help="Path to the NVM stats log file.")
+parser.add_argument("-o", "--output", default="output.csv", help="Path to the output CSV file (default: output.csv).")
+args = parser.parse_args()
+
+file1 = args.file1
+file2 = args.file2
+output = args.output
+
+# Validate required files
+for file in [file1, file2]:
+    if not os.path.isfile(file):
+        print(f"Error: File not found: {file}")
+        exit(1)
 
 time_ops = {}
 pattern1 = re.compile(r"I(\d{4}) (\d{2}:\d{2}:\d{2})\.\d+ \d+ ProgressTracker.*? (\d+\.\d+)M ops")
@@ -51,4 +66,4 @@ with open(output, "w") as out:
     for r in records:
         out.write(f"{r[0]},{r[1]:.2f},{r[2]:.4f}\n")
 
-print(f"result has been written to {output}")
+print(f"Result has been written to {output}")
