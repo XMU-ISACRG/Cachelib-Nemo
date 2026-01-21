@@ -84,3 +84,28 @@ If you want a dry-run mode (show parsed args without invoking build/reset/cacheb
 ## Configuration Notes
 
 All configurations mentioned in the paper can be modified directly in the JSON files provided in the repository. For example, the `znscache_test.json` file contains parameters such as `navyZNSKVCacheBloomFilterFp`, `navyZNSKVCacheBucketSize`, and other cache settings. Adjust these fields to match the experimental setup described in the paper.
+
+### Write Amplification (WA) Log Processing
+
+**Please Note!**
+
+To view the Write Amplification (WA) log in Figure 13, use the `clean_wa.sh` script to process the original log. The original log contains interference from the Large Object Cache, but the results in the paper are based on the Small Object Cache. After processing, you will be able to see the trace and WA growth trend.
+
+For Figure 14, latency can be directly observed in the original log.
+
+#### Usage
+
+When using the `clean_wa.sh` script, pay special attention to the `file1` and `file2` parameters. Ensure that:
+
+- `file1` is the path to the original log file containing the raw data.
+- `file2` is the path where the processed log will be saved.
+
+Example:
+
+```sh
+./clean_wa.sh file1 file2
+```
+
+Replace `file1` and `file2` with the appropriate file paths.
+
+**Note:** The instructions for using the `clean_wa.sh` script apply to the FairyWREN branch as well. Ensure that you follow the same steps for processing logs in the FairyWREN branch.
